@@ -57,4 +57,10 @@ yarn start</code></pre>
   <li>JavaScript</li>
 </ul>
 
+<h2>Contribuição</h2>
 
+<p>Contribuições são bem-vindas! Se você encontrar algum bug ou tiver alguma ideia para melhorar o aplicativo, sinta-se à vontade para abrir um issue ou enviar um pull request.</p>
+
+<h2>Contato</h2>
+
+<p>Se tiver alguma dúvida ou quiser entrar em contato, você pode me encontrar no seguinte endereço de e-mail: rodriguesdomingosf@gmail.com</p>

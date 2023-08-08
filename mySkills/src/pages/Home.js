@@ -15,9 +15,13 @@ export function Home() {
 
   const [yourName, setYourName] = useState('Rodrigues'); //Change your name here
   const [newSkill, setNewSkill] = useState('');
-  const [mySkills, setmySkills] = useState([]);
+  const [mySkills, setMySkills] = useState([]);
 
-  //Function to add 
+  // Function to add a new skill to the list of skills
+  function handleAddNewSkill(){
+    //setMySkills(oldState => [mySkills, newSkill]); or
+    setMySkills(oldState => [...oldState, newSkill]); // Append the new skill to the existing list of skills
+  }
   
   return (
     <SafeAreaView style={styles.container}>
@@ -30,12 +34,27 @@ export function Home() {
       
       <TouchableOpacity 
         style={styles.button} 
-        activeOpacity={0.5}>
+        activeOpacity={0.5}
+        onPress={handleAddNewSkill}>
           <Text style={styles.buttonText}>Add new</Text>
       </TouchableOpacity>
 
       <View>
-        <Text style={[styles.title, {marginTop: 5}]}>{newSkill}</Text>
+
+        <Text style={[styles.title, {marginVertical: 40}]}>My Skills</Text>
+        {
+          // Map through each skill in the mySkills array and create a stylized button (TouchableOpacity) for each skill.
+          mySkills.map(skill => (
+            // The "key" prop is used to provide a unique identifier for each element in the array of components.
+            // It helps React efficiently update and manage the list of components.
+            // In this case, we use the skill itself as the key since each skill is assumed to be unique.
+            <TouchableOpacity key={skill} style={styles.buttonSkill}>
+              <Text style={styles.textSkill}>{skill}</Text>
+            </TouchableOpacity>
+          ))
+        }
+
+
       </View>
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -72,5 +91,17 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 17,
     fontWeight: 'bold'
+  },
+  buttonSkill:{
+    backgroundColor: '#1F1E25',
+    padding: 18,
+    borderRadius: 40,
+    alignItems: 'center',
+    marginVertical: 10
+  },
+  textSkill:{
+    color: '#FFF',
+    fontSize: 20, 
+    fontWeight: 'bold',
   }
 });
