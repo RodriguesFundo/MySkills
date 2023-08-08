@@ -10,6 +10,8 @@ import {
   TouchableOpacity
  } 
   from 'react-native';
+import { Button } from '../components/Button';
+import { SkillCard } from '../components/SkillCard';
 
 export function Home() {
 
@@ -32,12 +34,7 @@ export function Home() {
         placeholderTextColor='#666'
         onChangeText={setNewSkill}/> 
       
-      <TouchableOpacity 
-        style={styles.button} 
-        activeOpacity={0.5}
-        onPress={handleAddNewSkill}>
-          <Text style={styles.buttonText}>Add new</Text>
-      </TouchableOpacity>
+      <Button/>
 
       <View>
 
@@ -48,9 +45,7 @@ export function Home() {
             // The "key" prop is used to provide a unique identifier for each element in the array of components.
             // It helps React efficiently update and manage the list of components.
             // In this case, we use the skill itself as the key since each skill is assumed to be unique.
-            <TouchableOpacity key={skill} style={styles.buttonSkill}>
-              <Text style={styles.textSkill}>{skill}</Text>
-            </TouchableOpacity>
+            <SkillCard/>
           ))
         }
 
@@ -79,29 +74,5 @@ const styles = StyleSheet.create({
       fontSize: 20, 
       marginVertical: 30, 
       borderRadius: Platform.OS==='android' ? 10: 7
-  },
-  button:{
-    backgroundColor: '#A370F7',
-    alignItems: 'center', 
-    padding: 15,
-    borderRadius: 7,
-    marginVertical: 10
-  },
-  buttonText:{
-    color: '#FFF',
-    fontSize: 17,
-    fontWeight: 'bold'
-  },
-  buttonSkill:{
-    backgroundColor: '#1F1E25',
-    padding: 18,
-    borderRadius: 40,
-    alignItems: 'center',
-    marginVertical: 10
-  },
-  textSkill:{
-    color: '#FFF',
-    fontSize: 20, 
-    fontWeight: 'bold',
   }
 });
