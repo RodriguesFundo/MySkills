@@ -29,12 +29,13 @@ export function Home() {
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Bem vindo, {yourName}</Text>
       <TextInput 
-        style={styles.input} 
-        placeholder='New Skill' 
-        placeholderTextColor='#666'
-        onChangeText={setNewSkill}/> 
+          style={styles.input} 
+          placeholder='New Skill' 
+          placeholderTextColor='#666'
+          onChangeText={setNewSkill}
+        /> 
       
-      <Button/>
+      <Button onPress={handleAddNewSkill} />
 
       <View>
 
@@ -45,13 +46,13 @@ export function Home() {
             // The "key" prop is used to provide a unique identifier for each element in the array of components.
             // It helps React efficiently update and manage the list of components.
             // In this case, we use the skill itself as the key since each skill is assumed to be unique.
-            <SkillCard/>
+            <SkillCard key={skill} skill={skill} />
           ))
         }
 
 
       </View>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </SafeAreaView>
   );
 }
