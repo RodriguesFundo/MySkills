@@ -7,7 +7,8 @@ import {
   SafeAreaView, 
   TextInput, 
   Platform,
-  TouchableOpacity
+  TouchableOpacity,
+  FlatList
  } 
   from 'react-native';
 import { Button } from '../components/Button';
@@ -40,15 +41,15 @@ export function Home() {
       <View>
 
         <Text style={[styles.title, {marginVertical: 40}]}>My Skills</Text>
-        {
-          // Map through each skill in the mySkills array and create a stylized button (TouchableOpacity) for each skill.
-          mySkills.map(skill => (
-            // The "key" prop is used to provide a unique identifier for each element in the array of components.
-            // It helps React efficiently update and manage the list of components.
-            // In this case, we use the skill itself as the key since each skill is assumed to be unique.
-            <SkillCard key={skill} skill={skill} />
-          ))
-        }
+      
+      <FlatList
+        data={mySkills}
+        keyExtractor={item => item} // Use the skill itself as the key
+        renderItem={({ item }) => (
+          <SkillCard skill={item} />
+        )}
+      />
+
 
 
       </View>
